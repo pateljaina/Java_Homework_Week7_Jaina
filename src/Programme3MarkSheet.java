@@ -9,17 +9,24 @@
 import java.util.Scanner;
 
 public class Programme3MarkSheet {
+
+    static String studentName, result, grade;//store variables
+    static int mathM, englishM, scienceM, total, rollno;//store variables
+    static float percentage;
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
+        printTheMarkSheet();
+    }
 
-        String StudentName, result, grade;//store variables
-        int mathM, englishM, scienceM, total, rollno;//store variables
-        float percentage;
-
-        Scanner scanner = new Scanner(System.in);
+    public static void studentDetails() {
         System.out.println("What is the students name?     ");
-        StudentName = scanner.next();//store students name
+        studentName = scanner.next();//store students name
         System.out.println("What is the students roll number?");
         rollno = scanner.nextInt();//store roll number
+    }
+
+    public static void subjectMarks() {
 
         System.out.println("Please enter the Maths mark value?");
         mathM = scanner.nextInt();
@@ -43,29 +50,62 @@ public class Programme3MarkSheet {
             englishM = scanner.nextInt();
             scanner.close();
         }
+    }
 
+    public static void calculation() {
+        subjectMarks();
         total = mathM + scienceM + englishM;
         System.out.println("Total marks: " + total);
         percentage = total / 3f;
         System.out.println("Percentage: " + percentage);
 
         if (percentage >= 35 && mathM >= 35 && scienceM >= 35 && englishM >= 35) {//if else method for pass or fail
-            System.out.println(" PASS ");
+            result = "PASS";
         } else {
-            System.out.println(" FAIL ");
+            result = " FAIL ";
         }
 
         if (percentage >= 80) {//nested if else
-            System.out.println("A+");
+            grade = "A+";
         } else if (percentage >= 60) {
-            System.out.println("A");
+            grade = "A";
         } else if (percentage > 50) {
-            System.out.println("B");
+            grade = "B";
         } else if (percentage > 35) {
-            System.out.println("C");
+            grade = "C";
         }
+
     }
+
+
+
+    public static void printTheMarkSheet() {
+    studentDetails();
+    calculation();
+        System.out.println("|                  Mark Sheet            |");
+        System.out.println("|________________________________________|");
+        System.out.println("| Name               :" + studentName + "|");
+        System.out.println("| Roll No            :" + rollno +      "|");
+        System.out.println("|________________________________________|");
+        System.out.println("| Subjects           :    Marks          |");
+        System.out.println("|________________________________________|");
+        System.out.println("| Math              :" + mathM +        "|");
+        System.out.println("| Science           :" + scienceM +     "|");
+        System.out.println("| English           :" + englishM +     "|");
+        System.out.println("|________________________________________|");
+        System.out.println("| Total             :" + total +        "|");
+        System.out.println("|________________________________________|");
+        System.out.println("| Percentage        :" + percentage +   "|");
+        System.out.println("| Result            :" + result +       "|");
+        System.out.println("| Grade             :" + grade  +       "|");
+        System.out.println("|_______________________________________ | ");
+
+
+    }
+
+
 }
+
 
 
 
